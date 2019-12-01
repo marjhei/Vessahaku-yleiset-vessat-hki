@@ -1,0 +1,46 @@
+﻿@model VessaMVC.Models.Käyttäjät
+@{
+    ViewData["Title"] = "Login";
+}
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))  
+{  
+<fieldset>  
+<h1>Kirjaudu sisään</h1>  
+<hr />
+@Html.AntiForgeryToken()  
+@Html.ValidationSummary(true)  
+@if (@ViewBag.Message != null)  
+{  
+<div style="border: 1px solid red">  
+@ViewBag.Message  
+</div>  
+}  
+<table>  
+<tr>  
+<td>@Html.LabelFor(a => a.Nimimerkki)</td>  
+<td>@Html.TextBoxFor(a => a.Nimimerkki, new { @class = "form-control m-1" })</td>  
+<td>@Html.ValidationMessageFor(a => a.Nimimerkki)</td>  
+</tr>  
+<tr>  
+<td>  
+@Html.LabelFor(a => a.Salasana)  
+</td>  
+<td>  
+@Html.PasswordFor(a => a.Salasana, new { @class = "form-control m-1" })  
+</td>  
+<td>  
+@Html.ValidationMessageFor(a => a.Salasana)  
+</td>  
+</tr>  
+<tr>  
+<td></td>  
+<td>  
+<input type="submit" value="Kirjaudu" class="btn btn-primary m-1"/>  
+</td>  
+<td></td>  
+</tr>  
+</table>  
+</fieldset>  
+}  
+
